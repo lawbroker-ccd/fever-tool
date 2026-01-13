@@ -31,14 +31,36 @@
       background: #fff;
       word-break: break-all;
     }
+    button{
+      color:#ffff0b;
+      font-weight: 600;
+      border:#F2F2F2 solid 1px;
+      border-radius: 60px;
+      padding:10px 30px;
+      margin-top:16px;
+      background: #1D3EB5;
+      background: linear-gradient(90deg, rgba(29, 62, 181, 1) 0%, rgba(29, 50, 151, 1) 100%);
+    }
+    input{
+      border-radius: 30px;
+      border:#d7d7d7 solid 1px;
+      padding-left:16px;
+    }
+    body{
+      background: #F2F2F2;
+      border:#F2F2F2 solid 1px;
+    }
+    label{
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
 
-  <h2>夥伴推薦分享</h2>
+  <h1>夥伴推薦分享</h1>
 
-  <label>輸入業代：</label>
-  <input type="text" id="inputCode" placeholder="請輸入您的業代，例如：A00001" style="max-width:320px;">
+  <label>請輸入推薦人業代：</label>
+  <input type="text" id="inputCode" placeholder="例：A00001" style="max-width:320px;">
   <br>
   <button onclick="generateURL()">產生專屬分享網址</button>
 
@@ -52,7 +74,7 @@
     function generateURL() {
       const code = document.getElementById("inputCode").value.trim();
       if (!code) {
-        alert("請輸入內容！");
+        alert("請輸入推薦人業代");
         return;
       }
 
@@ -64,7 +86,7 @@
     function copyURL() {
       const text = document.getElementById("outputURL").innerText;
       navigator.clipboard.writeText(text).then(() => {
-        alert("已複製到剪貼簿！");
+        alert("已複製到剪貼簿");
       });
     }
   </script>
