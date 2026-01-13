@@ -2,57 +2,122 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>活動網址產生器</title>
+
   <style>
     body {
       font-family: Arial, "微軟正黑體";
       max-width: 600px;
       margin: 50px auto;
       padding: 20px;
-      border: 1px solid #333333;
       border-radius: 30px;
       background: #fafafa;
     }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+
     input, button {
-      padding: 10px;
       font-size: 16px;
     }
+
     input {
       width: 100%;
-      margin-bottom: 10px;
+      margin-top: 6px;
+      margin-bottom: 20px;
+      border-radius: 30px;
+      border: #d7d7d7 solid 1px;
+      padding: 12px 20px;
+      box-sizing: border-box;
     }
+
     button {
+      width: 100%;
       cursor: pointer;
+      color: #ffff0b;
+      font-weight: 600;
+      border: #F2F2F2 solid 1px;
+      border-radius: 60px;
+      padding: 12px 30px;
+      margin: 16px auto 8px auto;
+      display: block;
+      max-width: 400px;
+      background: linear-gradient(90deg, rgba(29, 62, 181, 1) 0%, rgba(29, 50, 151, 1) 100%);
     }
+
     #resultBox {
-      margin-top: 15px;
-      padding: 10px;
-      border: 1px solid #ccc;
+      margin-top: 40px;
+      padding: 16px;
+      border-radius: 16px;
+      border: 3px solid rgb(29, 62, 181);
+      border-radius: 30px;
       background: #fff;
       word-break: break-all;
     }
+
+    #outputURL {
+      margin-top: 20px;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    /* =========================
+       📱 RWD：手機版（359px）
+       ========================= */
+    @media (max-width: 375px) {
+      body {
+        max-width: 100%;
+        margin: 0;
+        border-radius: 0;
+        padding: 16px;
+        background: #F2F2F2;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      button {
+        font-size: 16px;
+      }
+
+      #resultBox {
+        padding: 14px;
+      }
+    }
   </style>
 </head>
+
 <body>
 
-  <h2>夥伴推薦分享</h2>
+  <h1>夥伴推薦分享</h1>
 
-  <label>輸入業代：</label>
-  <input type="text" id="inputCode" placeholder="請輸入您的業代，例如：A00001" style="max-width:320px;">
-  <br>
-  <button onclick="generateURL()">產生專屬分享網址</button>
+  <label style="margin-top: 30px;" for="inputCode">請輸入推薦人業代：</label>
+  <input type="text" id="inputCode" placeholder="例：A00001">
 
-  <div id="resultBox" style="display:none;">
-    <p><strong>產生結果：</strong></p>
+  <button style="background:#0E1538;" onclick="generateURL()">產生專屬分享網址</button>
+  <button style="background:#0E1538;"><a style="color:#f2f2f2; text-decoration:none;" href="https://events.lawbroker.com.tw/main/2026elite-722?test=UnUZVsH4r%2B7uQgBsCUsgsGkGXcF3X7Gw%2BLF5c94JmDKLp3dKJ9aUaYXmrF97joxfARfWF2vu%2FQkBjW5SlSe8sWXhshLSCva7D8zgxHROXr7PIaV9w4i%2BKKI%2BaMDf5uTk&test_code=10a85f628c70f1c1caad2db1152ed583e8ad2dbecb9198e7a14d7ffd1e42bec3&test_expired=1768534849" >返回活動網頁</a></button>
+
+  <div id="resultBox" style="display:none; padding-left: 20px;">
+    <p><strong>專屬分享網址：</strong></p>
     <p id="outputURL"></p>
-    <button onclick="copyURL()">複製專屬網址</button>
+    <button onclick="copyURL()">複製專屬分享網址</button>
   </div>
 
   <script>
     function generateURL() {
       const code = document.getElementById("inputCode").value.trim();
       if (!code) {
-        alert("請輸入內容！");
+        alert("請輸入推薦人業代");
         return;
       }
 
@@ -64,7 +129,7 @@
     function copyURL() {
       const text = document.getElementById("outputURL").innerText;
       navigator.clipboard.writeText(text).then(() => {
-        alert("已複製到剪貼簿！");
+        alert("已複製到剪貼簿");
       });
     }
   </script>
